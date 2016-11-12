@@ -7,7 +7,7 @@ var conn = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: '!!!!!!!!!',
+	password: '!!!!!!!',
 	database: 'zip_code_stats'
 });
 
