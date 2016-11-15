@@ -6,6 +6,12 @@
     <title>TEST 2</title>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-2.0.0.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <style>
     body {
 		  margin: 0;
@@ -55,9 +61,9 @@
 
 		#features {
 		  top: 0;
-		  height: 100px;
+		  height: 300px;
 		  margin-top: 20px;
-		  width: 250px;
+		  width: 400px;
 		}
 
 		#legend {
@@ -168,7 +174,14 @@
 					if (zipData.length > 0) {
 						var layerID = zipData[0].properties.zipcode
 						// console.log(layerID)
-						document.getElementById('pd').innerHTML = '<h3><strong>' + zipData[0].properties.zipcode + '</strong></h3>'
+						document.getElementById('pd').innerHTML = '<h3><strong>' + zipData[0].properties.zipcode + '</strong></h3>' +
+						'<h3>Median Rent: $</h3>' + 
+						'<h3>Median House Price: $</h3>' + 
+						'<h3>Median Household Income: $</h3>' +
+						'<h3>Unemployment Rate: __%</h3>' + 
+						'<h3>Large Households (Families of 5+): </h3>' + 
+						'<h3>% Change in Median Rent 2000-2012: __%</h3>' + 
+						'<h3>% Change in Median House Price 2000-2012: __%</h3>'
 
 						map.setFilter('zipcode-hover', ['==', 'zipcode', layerID])
 					}
@@ -184,6 +197,9 @@
 		});
 
 	</script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 
