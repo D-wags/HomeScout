@@ -3,7 +3,7 @@ USE zip_code_stats;
 
 DROP TABLE IF EXISTS zip_code;
 
-CREATE TABLE zip_code (
+CREATE TABLE zip_stats (
 	zip CHAR(5),
 	primary key(zip),
 	percent_below_pov DECIMAL(19,4),

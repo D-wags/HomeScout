@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "admin",
-    "database": "zipstats_db",
+    "password": "hippo666",
+    "database": "zip_code_stats",
     "host": "localhost",
     "dialect": "mysql"
   },
