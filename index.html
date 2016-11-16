@@ -29,10 +29,10 @@
     <div class="row">
 
         <div class="col-md-6">
-            <h4>Annual Income Range</h4>
+            <h4>Monthly Rent:</h4>
         </div>
         <div class="col-md-6">
-            <input type="text" id="range" value="" name="range" />
+            <input type="text" id="rent" value="" name="range" />
         </div>
 
     </div>
@@ -40,10 +40,10 @@
     <div class="row">
 
         <div class="col-md-6">
-            <h4>Property Value Range</h4>
+            <h4>Median Home Value:</h4>
         </div>
         <div class="col-md-6">
-            <input type="text" id="range1" value="" name="range" />
+            <input type="text" id="homevalue" value="" name="range" />
         </div>
 
     </div>
@@ -51,35 +51,28 @@
     <div class="row">
 
         <div class="col-md-6">
-            <h4>Rent Range</h4>
+            <h4>Percent of Family Homes:</h4>
         </div>
         <div class="col-md-6">
-            <input type="text" id="range2" value="" name="range" />
+            <input type="text" id="family" value="" name="range" />
         </div>
 
     </div>
+
 
     <div class="row">
 
         <div class="col-md-6">
-            <h4>Percent of Residences within 1/4 mile of bus route</h4>
+            <h4>Percent of homes within 1/4 mile of bus route:</h4>
         </div>
         <div class="col-md-6">
-            <input type="text" id="range3" value="" name="range" />
+            <input type="text" id="bus" value="" name="range" />
         </div>
 
     </div>
 
-    <div class="row">
 
-        <div class="col-md-6">
-            <h4>Annual Number of Crimes</h4>
-        </div>
-        <div class="col-md-6">
-            <input type="text" id="range4" value="" name="range" />
-        </div>
 
-    </div>
 
     <button class="btn-lg" id="send"><h5>Get Houses</h5></button>
 </div>
@@ -92,79 +85,88 @@
 <script src="js/ion.rangeSlider.js"></script>
 
 <script>
-
+    var range_data;
     // $(function () {
 
-        $("#range").ionRangeSlider({
+        $("#rent").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
-            min: 0,
-            max: 5000,
-            from: 1000,
-            to: 4000,
+            min: 600,
+            max: 2000,
+            from: 600,
+            to: 2000,
             type: 'double',
             step: 1,
             prefix: "$",
             grid: true
         });
 
-        $("#range1").ionRangeSlider({
+        $("#homevalue").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
-            min: 0,
-            max: 5000,
-            from: 1000,
-            to: 4000,
+            min: 60000,
+            max: 620000,
+            from: 60000,
+            to: 620000,
             type: 'double',
             step: 1,
             prefix: "$",
             grid: true
         });
 
-        $("#range2").ionRangeSlider({
+        $("#family").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
             min: 0,
-            max: 5000,
-            from: 1000,
-            to: 4000,
+            max: 40,
+            from: 0,
+            to: 40,
             type: 'double',
             step: 1,
-            prefix: "$",
+            postfix: "%",
             grid: true
         });
 
-        $("#range3").ionRangeSlider({
+        $("#bus").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
             min: 0,
-            max: 5000,
-            from: 1000,
-            to: 4000,
+            max: 100,
+            from: 0,
+            to: 100,
             type: 'double',
             step: 1,
-            prefix: "$",
-            grid: true
-        });
-
-        $("#range4").ionRangeSlider({
-            hide_min_max: true,
-            keyboard: true,
-            min: 0,
-            max: 5000,
-            from: 1000,
-            to: 4000,
-            type: 'double',
-            step: 1,
-            prefix: "$",
+            postfix: "%",
             grid: true
         });
 
     // });
     $("#send").on('click', function() {
-        var maxi = $("#range").data();
-        console.log(maxi.to);
-    })
+
+        range_data = {
+
+            rent: {
+                min: $("#rent").data().from,
+                max: $("#rent").data().to
+            },
+            homevalue: {
+                min: $("#homevalue").data().from,
+                max: $("#homevalue").data().to
+            },
+            family: {
+                min: $("#family").data().from,
+                max: $("#family").data().to
+            },
+            bus: {
+                min: $("#bus").data().from,
+                max: $("#bus").data().to
+            }
+        };
+
+        console.log(range_data);
+
+    });
+
 </script>
 
 
