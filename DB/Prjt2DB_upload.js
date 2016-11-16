@@ -6,6 +6,23 @@ var inFile = 'Project2Data.csv';
 // Read the config file and send to the callback
 fs.readFile('../config/config.json', handleFile);
 
+var conn = mysql.createConnection({
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: 'hippo666',
+	database: 'zip_code_stats'
+});
+
+
+conn.connect(function(err) {
+	if (err) {
+		console.log(err);
+		throw err;
+	}
+
+});
+
 // Write the callback function
 function handleFile(err, dt)
 {
