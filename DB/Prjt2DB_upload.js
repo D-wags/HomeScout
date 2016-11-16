@@ -32,16 +32,17 @@ function handleFile(err, dt)
 			for (var row = 1; row < data.length; row++) {
 				var colArr = data[row].split(",");
 				console.log(colArr[1]);
-				var query = "INSERT INTO ZipStats VALUES ('"+colArr[0]+"', "+colArr[3]+", "+colArr[4]+", "+colArr[8]+", "+colArr[9]+", "+colArr[14]+", "+colArr[15]+", "+colArr[17]+", "+colArr[28]+", "+colArr[27]+", "+colArr[29]+", "+colArr[1]+", '"+colArr[2]+"')";
-					conn.query(query, function(err,res) {
-						if (err) {
-							console.log(err);
-							throw err;
-						}
-						else {
-							console.log("SUCCESS!");
-						}
-					});
+				var query = "INSERT INTO zipstats (zip,percent_below_pov,median_income,percent_unemployment,percent_family_homes,median_rent,median_home_value,percent_housing_growth,percent_change_property_value,percent_change_median_rent,percent_home_close_to_bus_route,annual_number_crimes,google_fiber) VALUES ('"+colArr[0]+"', "+colArr[3]+", "+colArr[4]+", "+colArr[8]+", "+colArr[9]+", "+colArr[14]+", "+colArr[15]+", "+colArr[17]+", "+colArr[28]+", "+colArr[27]+", "+colArr[29]+", "+colArr[1]+", '"+colArr[2]+"')";
+				console.log(query);
+				conn.query(query, function(err,res) {
+					if (err) {
+						console.log(err);
+						throw err;
+					}
+					else {
+						console.log("SUCCESS!");
+					}
+				});
 			}
 		});
 	});
