@@ -97,7 +97,8 @@ Here is the main HTML where handlebars will render to
 	<!-- {{{body}}} -->
 
 	<script type="text/javascript">
-		// var queryData = {{{body}}}
+		// database findAll passed through handlebars
+		var queryData = {{{body}}}
 		// console.log(queryData)
 
 		mapboxgl.accessToken = 'pk.eyJ1IjoibXRpYmJ5OTIiLCJhIjoiY2l2ZHZoMzY5MDBxdTJ1bHZ0MDdreXpjNyJ9.twsBW3kCxASfSzzcPJCuhQ'
@@ -111,48 +112,15 @@ Here is the main HTML where handlebars will render to
 		  zoom: 11.6
 		});
 
+		function roundToTwo(num) {    
+		    return +(Math.round(num + "e+2")  + "e-2");
+		}
+
 		map.on('load', function() { 
 			var layers = [78754, 76530, 78739, 78645, 78732, 78737, 78756, 78723, 78655, 78617, 78613, 78733, 78750, 78642, 78663, 78747, 78712, 78751, 78728, 78744, 78741, 78719, 78605, 78742, 78722, 78656, 78721, 78703, 78717, 78749, 78702, 78730, 78681, 78731, 78652, 78626, 78745, 78748, 78757, 78634, 78729, 78752, 78620, 78610, 78704, 78644, 78724, 78619, 78734, 78612, 78669, 78636, 78753, 78616, 78727, 78640, 78726, 78660, 78615, 76574, 78662, 78705, 78758, 78759, 78701, 78664] //all zip codes in dataset below
 
-			var test = {{{toJSON zipstats}}};
-			console.log(test)
-
-			var sqlData = [{"zip":"78617", "percent_below_pov":0.18, "median_income":66096.0, "percent_unemployment":0.15, "percent_family_homes":1041.0, "median_rent":100600.0, "median_home_value":0.34, "percent_housing_growth":0.74, "percent_change_property_value":0.21, "percent_change_median_rent":0.74, "percent_home_close_to_bus_route":0.16, "annual_number_crimes":1160, "google_fiber":"0"},
-				 {"zip":"78701", "percent_below_pov":0.2, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":1590.0, "median_rent":338300.0, "median_home_value":1.34, "percent_housing_growth":1.15, "percent_change_property_value":0.59, "percent_change_median_rent":1.15, "percent_home_close_to_bus_route":0.97, "annual_number_crimes":8842, "google_fiber":"1"},
-				 {"zip":"78702", "percent_below_pov":0.33, "median_income":66096.0, "percent_unemployment":0.11, "percent_family_homes":766.0, "median_rent":175400.0, "median_home_value":0.15, "percent_housing_growth":0.73, "percent_change_property_value":2.07, "percent_change_median_rent":0.73, "percent_home_close_to_bus_route":0.96, "annual_number_crimes":5770, "google_fiber":"1"},
-				 {"zip":"78703", "percent_below_pov":0.1, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1183.0, "median_rent":621900.0, "median_home_value":0.01, "percent_housing_growth":0.65, "percent_change_property_value":1.04, "percent_change_median_rent":0.65, "percent_home_close_to_bus_route":0.67, "annual_number_crimes":2037, "google_fiber":"0"},
-				 {"zip":"78704", "percent_below_pov":0.21, "median_income":66096.0, "percent_unemployment":0.07, "percent_family_homes":940.0, "median_rent":338200.0, "median_home_value":0.09, "percent_housing_growth":0.4, "percent_change_property_value":1.26, "percent_change_median_rent":0.4, "percent_home_close_to_bus_route":0.76, "annual_number_crimes":7892, "google_fiber":"1"},
-				 {"zip":"78705", "percent_below_pov":0.66, "median_income":66096.0, "percent_unemployment":0.14, "percent_family_homes":1088.0, "median_rent":292500.0, "median_home_value":0.02, "percent_housing_growth":0.7, "percent_change_property_value":0.4, "percent_change_median_rent":0.7, "percent_home_close_to_bus_route":1.0, "annual_number_crimes":3110, "google_fiber":"0"},
-				 {"zip":"78717", "percent_below_pov":0.03, "median_income":66096.0, "percent_unemployment":0.05, "percent_family_homes":1018.0, "median_rent":243200.0, "median_home_value":2.3, "percent_housing_growth":0.02, "percent_change_property_value":0.33, "percent_change_median_rent":0.02, "percent_home_close_to_bus_route":0.03, "annual_number_crimes":758, "google_fiber":"0"},
-				 {"zip":"78721", "percent_below_pov":0.32, "median_income":66096.0, "percent_unemployment":0.16, "percent_family_homes":870.0, "median_rent":121000.0, "median_home_value":0.35, "percent_housing_growth":0.62, "percent_change_property_value":1.13, "percent_change_median_rent":0.62, "percent_home_close_to_bus_route":0.87, "annual_number_crimes":2246, "google_fiber":"1"},
-				 {"zip":"78722", "percent_below_pov":0.19, "median_income":66096.0, "percent_unemployment":0.08, "percent_family_homes":930.0, "median_rent":265100.0, "median_home_value":0.06, "percent_housing_growth":0.4, "percent_change_property_value":1.27, "percent_change_median_rent":0.4, "percent_home_close_to_bus_route":0.98, "annual_number_crimes":947, "google_fiber":"0"},
-				 {"zip":"78723", "percent_below_pov":0.29, "median_income":66096.0, "percent_unemployment":0.1, "percent_family_homes":817.0, "median_rent":176500.0, "median_home_value":0.13, "percent_housing_growth":0.28, "percent_change_property_value":1.07, "percent_change_median_rent":0.28, "percent_home_close_to_bus_route":0.84, "annual_number_crimes":6471, "google_fiber":"1"},
-				 {"zip":"78724", "percent_below_pov":0.38, "median_income":66096.0, "percent_unemployment":0.08, "percent_family_homes":962.0, "median_rent":105700.0, "median_home_value":0.48, "percent_housing_growth":0.37, "percent_change_property_value":0.46, "percent_change_median_rent":0.37, "percent_home_close_to_bus_route":0.21, "annual_number_crimes":2241, "google_fiber":"0"},
-				 {"zip":"78726", "percent_below_pov":0.09, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1050.0, "median_rent":349900.0, "median_home_value":1.18, "percent_housing_growth":0.2, "percent_change_property_value":0.55, "percent_change_median_rent":0.2, "percent_home_close_to_bus_route":0.02, "annual_number_crimes":764, "google_fiber":"0"},
-				 {"zip":"78727", "percent_below_pov":0.11, "median_income":66096.0, "percent_unemployment":0.06, "percent_family_homes":1050.0, "median_rent":198500.0, "median_home_value":0.39, "percent_housing_growth":0.13, "percent_change_property_value":0.61, "percent_change_median_rent":0.13, "percent_home_close_to_bus_route":0.24, "annual_number_crimes":1879, "google_fiber":"0"},
-				 {"zip":"78728", "percent_below_pov":0.14, "median_income":66096.0, "percent_unemployment":0.06, "percent_family_homes":901.0, "median_rent":168600.0, "median_home_value":0.24, "percent_housing_growth":0.16, "percent_change_property_value":0.3, "percent_change_median_rent":0.16, "percent_home_close_to_bus_route":0.28, "annual_number_crimes":45, "google_fiber":"0"},
-				 {"zip":"78729", "percent_below_pov":0.08, "median_income":66096.0, "percent_unemployment":0.07, "percent_family_homes":1008.0, "median_rent":192300.0, "median_home_value":0.28, "percent_housing_growth":0.12, "percent_change_property_value":0.43, "percent_change_median_rent":0.12, "percent_home_close_to_bus_route":0.13, "annual_number_crimes":1683, "google_fiber":"0"},
-				 {"zip":"78730", "percent_below_pov":0.04, "median_income":66096.0, "percent_unemployment":0.03, "percent_family_homes":1106.0, "median_rent":570400.0, "median_home_value":0.78, "percent_housing_growth":0.22, "percent_change_property_value":0.44, "percent_change_median_rent":0.22, "percent_home_close_to_bus_route":0.02, "annual_number_crimes":171, "google_fiber":"0"},
-				 {"zip":"78731", "percent_below_pov":0.09, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1016.0, "median_rent":436800.0, "median_home_value":0.08, "percent_housing_growth":0.31, "percent_change_property_value":0.68, "percent_change_median_rent":0.31, "percent_home_close_to_bus_route":0.44, "annual_number_crimes":1388, "google_fiber":"1"},
-				 {"zip":"78732", "percent_below_pov":0.03, "median_income":66096.0, "percent_unemployment":0.05, "percent_family_homes":1688.0, "median_rent":388600.0, "median_home_value":2.39, "percent_housing_growth":1.05, "percent_change_property_value":0.75, "percent_change_median_rent":1.05, "percent_home_close_to_bus_route":0.0, "annual_number_crimes":15, "google_fiber":"0"},
-				 {"zip":"78735", "percent_below_pov":0.06, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1122.0, "median_rent":379900.0, "median_home_value":0.64, "percent_housing_growth":0.04, "percent_change_property_value":0.85, "percent_change_median_rent":0.04, "percent_home_close_to_bus_route":0.09, "annual_number_crimes":824, "google_fiber":"1"},
-				 {"zip":"78739", "percent_below_pov":0.01, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":2000.0, "median_rent":350500.0, "median_home_value":1.08, "percent_housing_growth":0.0, "percent_change_property_value":0.72, "percent_change_median_rent":0.0, "percent_home_close_to_bus_route":0.08, "annual_number_crimes":414, "google_fiber":"0"},
-				 {"zip":"78741", "percent_below_pov":0.4, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":835.0, "median_rent":120200.0, "median_home_value":0.18, "percent_housing_growth":0.28, "percent_change_property_value":0.58, "percent_change_median_rent":0.28, "percent_home_close_to_bus_route":0.8, "annual_number_crimes":9935, "google_fiber":"1"},
-				 {"zip":"78742", "percent_below_pov":0.37, "median_income":66096.0, "percent_unemployment":0.11, "percent_family_homes":639.0, "median_rent":54400.0, "median_home_value":0.57, "percent_housing_growth":0.17, "percent_change_property_value":-0.37, "percent_change_median_rent":0.17, "percent_home_close_to_bus_route":0.03, "annual_number_crimes":167, "google_fiber":"0"},
-				 {"zip":"78744", "percent_below_pov":0.26, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":946.0, "median_rent":108100.0, "median_home_value":0.35, "percent_housing_growth":0.26, "percent_change_property_value":0.44, "percent_change_median_rent":0.26, "percent_home_close_to_bus_route":0.63, "annual_number_crimes":6914, "google_fiber":"1"},
-				 {"zip":"78745", "percent_below_pov":0.16, "median_income":66096.0, "percent_unemployment":0.07, "percent_family_homes":990.0, "median_rent":166200.0, "median_home_value":0.21, "percent_housing_growth":0.3, "percent_change_property_value":0.83, "percent_change_median_rent":0.3, "percent_home_close_to_bus_route":0.76, "annual_number_crimes":7582, "google_fiber":"1"},
-				 {"zip":"78746", "percent_below_pov":0.05, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1221.0, "median_rent":619900.0, "median_home_value":0.12, "percent_housing_growth":0.32, "percent_change_property_value":0.8, "percent_change_median_rent":0.32, "percent_home_close_to_bus_route":0.14, "annual_number_crimes":1580, "google_fiber":"0"},
-				 {"zip":"78748", "percent_below_pov":0.09, "median_income":66096.0, "percent_unemployment":0.06, "percent_family_homes":1095.0, "median_rent":185500.0, "median_home_value":0.74, "percent_housing_growth":0.29, "percent_change_property_value":0.58, "percent_change_median_rent":0.29, "percent_home_close_to_bus_route":0.4, "annual_number_crimes":4225, "google_fiber":"0"},
-				 {"zip":"78749", "percent_below_pov":0.06, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":1150.0, "median_rent":233900.0, "median_home_value":0.32, "percent_housing_growth":0.25, "percent_change_property_value":0.61, "percent_change_median_rent":0.25, "percent_home_close_to_bus_route":0.37, "annual_number_crimes":2145, "google_fiber":"1"},
-				 {"zip":"78750", "percent_below_pov":0.07, "median_income":66096.0, "percent_unemployment":0.06, "percent_family_homes":1012.0, "median_rent":303100.0, "median_home_value":0.32, "percent_housing_growth":0.2, "percent_change_property_value":0.64, "percent_change_median_rent":0.2, "percent_home_close_to_bus_route":0.21, "annual_number_crimes":1425, "google_fiber":"1"},
-				 {"zip":"78751", "percent_below_pov":0.26, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":865.0, "median_rent":292200.0, "median_home_value":0.07, "percent_housing_growth":0.38, "percent_change_property_value":0.97, "percent_change_median_rent":0.38, "percent_home_close_to_bus_route":0.98, "annual_number_crimes":3187, "google_fiber":"1"},
-				 {"zip":"78752", "percent_below_pov":0.32, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":752.0, "median_rent":153000.0, "median_home_value":0.15, "percent_housing_growth":0.17, "percent_change_property_value":0.71, "percent_change_median_rent":0.17, "percent_home_close_to_bus_route":0.8, "annual_number_crimes":3752, "google_fiber":"0"},
-				 {"zip":"78753", "percent_below_pov":0.26, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":826.0, "median_rent":134900.0, "median_home_value":0.19, "percent_housing_growth":0.26, "percent_change_property_value":0.4, "percent_change_median_rent":0.26, "percent_home_close_to_bus_route":0.59, "annual_number_crimes":9769, "google_fiber":"1"},
-				 {"zip":"78754", "percent_below_pov":0.11, "median_income":66096.0, "percent_unemployment":0.09, "percent_family_homes":969.0, "median_rent":167600.0, "median_home_value":1.32, "percent_housing_growth":0.33, "percent_change_property_value":0.33, "percent_change_median_rent":0.33, "percent_home_close_to_bus_route":0.19, "annual_number_crimes":1297, "google_fiber":"1"},
-				 {"zip":"78756", "percent_below_pov":0.09, "median_income":66096.0, "percent_unemployment":0.04, "percent_family_homes":888.0, "median_rent":342300.0, "median_home_value":0.08, "percent_housing_growth":0.47, "percent_change_property_value":0.99, "percent_change_median_rent":0.47, "percent_home_close_to_bus_route":0.9, "annual_number_crimes":878, "google_fiber":"1"},
-				 {"zip":"78757", "percent_below_pov":0.16, "median_income":66096.0, "percent_unemployment":0.06, "percent_family_homes":895.0, "median_rent":253300.0, "median_home_value":0.1, "percent_housing_growth":0.24, "percent_change_property_value":0.93, "percent_change_median_rent":0.24, "percent_home_close_to_bus_route":0.79, "annual_number_crimes":2883, "google_fiber":"1"},
-				 {"zip":"78758", "percent_below_pov":0.24, "median_income":66096.0, "percent_unemployment":0.1, "percent_family_homes":898.0, "median_rent":144200.0, "median_home_value":0.04, "percent_housing_growth":0.2, "percent_change_property_value":0.49, "percent_change_median_rent":0.2, "percent_home_close_to_bus_route":0.75, "annual_number_crimes":8395, "google_fiber":"1"},
-				 {"zip":"78759", "percent_below_pov":0.07, "median_income":66096.0, "percent_unemployment":0.07, "percent_family_homes":962.0, "median_rent":307800.0, "median_home_value":0.01, "percent_housing_growth":0.07, "percent_change_property_value":0.6, "percent_change_median_rent":0.07, "percent_home_close_to_bus_route":0.28, "annual_number_crimes":3280, "google_fiber":"1"}]
+			// var test = {{{toJSON zipstats}}};
+			// console.log(test)
 
 			map.addSource("zipcodes", {
 		        "type": "geojson",
@@ -223,11 +191,11 @@ Here is the main HTML where handlebars will render to
 					if (zipData.length > 0) {
 						var layerID = zipData[0].properties.zipcode
 
-						for (obj in sqlData) {
-							console.log(sqlData[obj])
-							console.log(sqlData[obj].zip)
-							if (sqlData[obj].zip == layerID) {
-								var hoverData = sqlData[obj]
+						for (obj in queryData) {
+							console.log(queryData[obj])
+							console.log(queryData[obj].zip)
+							if (queryData[obj].zip == layerID) {
+								var hoverData = queryData[obj]
 							}
 						}
 						// console.log(layerID)
@@ -235,10 +203,10 @@ Here is the main HTML where handlebars will render to
 						'<h3>Median Rent: $' + hoverData.median_rent + '</h3>' + 
 						'<h3>Median House Price: $' + hoverData.median_home_value + '</h3>' + 
 						'<h3>Median Household Income: $' + hoverData.median_income + '</h3>' +
-						'<h3>Unemployment Rate: ' + hoverData.percent_unemployment + '%</h3>' + 
-						'<h3>Large Households (Families of 5+): ' + hoverData.percent_family_homes + '</h3>' + 
-						'<h3>% Change in Median Rent 2000-2012: ' + hoverData.percent_change_median_rent + '%</h3>' + 
-						'<h3>% Change in Median House Price 2000-2012: ' + hoverData.percent_change_property_value + '%</h3>'
+						'<h3>Unemployment Rate: ' + roundToTwo((hoverData.percent_unemployment * 100)) + '%</h3>' + 
+						'<h3>Large Households (Families of 5+): ' + roundToTwo((hoverData.percent_family_homes * 100)) + '</h3>' + 
+						'<h3>% Change in Median Rent 2000-2012: ' + roundToTwo((hoverData.percent_change_median_rent * 100)) + '%</h3>' + 
+						'<h3>% Change in Median House Price 2000-2012: ' + roundToTwo((hoverData.percent_change_property_value * 100)) + '%</h3>'
 
 						map.setFilter('zipcode-hover', ['==', 'zipcode', layerID])
 					}
@@ -257,7 +225,7 @@ Here is the main HTML where handlebars will render to
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	{{{body}}}
+
 </body>
 
 </html>
