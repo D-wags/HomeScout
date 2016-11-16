@@ -25,8 +25,14 @@ app.set('views', path.join(__dirname, 'views'));
 //set up handlebars
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance. 
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    helpers: {
+      toJSON: function(object) {
+        return JSON.stringify(object);
+      }
+    }
 });
+
 app.engine('handlebars', hbs.engine);
 
 app.set('view engine', 'handlebars');
