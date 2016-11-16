@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  	var ZipStats = sequelize.define('ZipStats', {
+  	var zipstats = sequelize.define('zipstats', {
 		zip: {
 			type: DataTypes.CHAR(5),
 			unique: true,
@@ -65,5 +65,5 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		}
 	});
-	return ZipStats;
+	return zipstats;
 };

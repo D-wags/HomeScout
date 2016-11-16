@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "admin",
+    "password": "pass",
     "database": "zip_code_stats",
     "host": "localhost",
     "dialect": "mysql"
