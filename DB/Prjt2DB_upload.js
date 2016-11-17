@@ -6,33 +6,19 @@ var inFile = 'Project2Data.csv';
 // Read the config file and send to the callback
 fs.readFile('../config/config.json', handleFile);
 
-var conn = mysql.createConnection({
-	host: 'localhost',
-	port: 3306,
-	user: 'root',
-	password: 'hippo666',
-	database: 'zip_code_stats'
-});
-
-
-conn.connect(function(err) {
-	if (err) {
-		console.log(err);
-		throw err;
-	}
-
-});
-
 // Write the callback function
 function handleFile(err, dt)
 {
-    if (err) throw err;
-    //Parse config/config.json file
-    var obj = JSON.parse(dt);
-    //Add port and user attributes (required for the connection)
-    var con_data = obj["development"];
-    con_data["port"] = 3306;
-    con_data["user"] = con_data["username"];
+	if (err) throw err;
+	//Parse config/config.json file
+	var obj = JSON.parse(dt);
+	//Add port and user attributes (required for the connection)
+	var con_data = obj["development"];
+	//Check if there is a port otherwise provide a default port
+	if( !con_data.hasOwnProperty("port") || con_data["port"]!= null ) {
+		con_data["port"] = 3306;
+	}
+	con_data["user"] = con_data["username"];
 	var connection = con_data;
 	//Create a connection
 	var conn = mysql.createConnection(connection);
