@@ -1,9 +1,9 @@
 CREATE DATABASE IF NOT EXISTS zip_code_stats;
 USE zip_code_stats;
 
-DROP TABLE IF EXISTS zip_code;
+DROP TABLE IF EXISTS zipstats;
 
-CREATE TABLE zip_stats (
+CREATE TABLE zipstats (
 	zip CHAR(5),
 	primary key(zip),
 	percent_below_pov DECIMAL(19,4),
@@ -17,5 +17,7 @@ CREATE TABLE zip_stats (
 	percent_change_median_rent DECIMAL(19,4),
 	percent_home_close_to_bus_route DECIMAL(19,4),
 	annual_number_crimes INTEGER(6),
-	google_fiber CHAR(1)
+	google_fiber CHAR(1),
+	walk_score INTEGER(3),
+	hip_score INTEGER(3)
 );
