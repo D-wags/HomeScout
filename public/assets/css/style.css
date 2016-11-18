@@ -62,6 +62,10 @@ body {
     vertical-align: middle;
 }
 
+#about img {
+    content:url("../img/GitHub_Logo.jpg");
+}
+
 #services {
     background-color: #306d9f;
     color: #ffffff;
