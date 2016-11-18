@@ -51,8 +51,16 @@ module.exports = function(sequelize, DataTypes) {
 		  type: DataTypes.INTEGER(6),
 		  allowNull: true
 		},
-		google_fiber: {
+		google_fiber: { 
 		  type: DataTypes.CHAR(1),
+		  allowNull: true
+		},
+		walk_score: {
+		  type: DataTypes.INTEGER(3),
+		  allowNull: true
+		},
+		hip_score: {
+		  type: DataTypes.INTEGER(3),
 		  allowNull: true
 		}
 	},
