@@ -51,6 +51,30 @@ $( document ).ready(function() {
 		postfix: "%",
 		grid: true
 	});
+
+	$("#walk").ionRangeSlider({
+		hide_min_max: true,
+		keyboard: true,
+		min: 0,
+		max: 100,
+		from: 0,
+		to: 100,
+		type: 'double',
+		step: 1,
+		grid: true
+	});
+
+	$("#hip").ionRangeSlider({
+		hide_min_max: true,
+		keyboard: true,
+		min: 0,
+		max: 100,
+		from: 0,
+		to: 100,
+		type: 'double',
+		step: 1,
+		grid: true
+	});
 	$("#send").on('click', function() {
 		range_data = {
 			rent: {
@@ -68,6 +92,14 @@ $( document ).ready(function() {
 			bus: {
 				min: $("#bus").data().from,
 				max: $("#bus").data().to
+			},
+			family: {
+				min: $("#walk").data().from,
+				max: $("#walk").data().to
+			},
+			bus: {
+				min: $("#hip").data().from,
+				max: $("#hip").data().to
 			}
 		};
 		console.log(range_data);
