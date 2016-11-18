@@ -164,9 +164,16 @@
             }
         };
 
-        console.log(range_data);
-
-    });
+        $.post("http://localhost:3000/api/data/", {
+            "rentMin": range_data.rent.min, 
+            "rentMax": range_data.rent.max, 
+            "homeMin": range_data.homevalue.min, 
+            "homeMax": range_data.homevalue.max, 
+            "familyMin": range_data.family.min, 
+            "familyMax": range_data.family.max, 
+            "busMin": range_data.bus.min, 
+            "busMax": range_data.bus.max
+        });
 
 </script>
 

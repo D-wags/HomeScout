@@ -18,4 +18,25 @@ models.zipstats.findAll()
 	})
 });
 
+//Garett's post route
+// router.post('/api/data', function(req, res){
+// 	var rentMin = (req.body.rentMin);
+// 	var rentMax = (req.body.rentMax)
+// 	var homeMin = (req.body.homeMin)
+// 	var homeMax = (req.body.homeMax)
+// 	var familyMin = (req.body.familyMin)
+// 	var familyMax = (req.body.familyMax)
+// 	var busMin = (req.body.busMin)
+// 	var busMax = (req.body.busMax)
+
+// 	console.log(rentMin);
+// 	console.log(rentMax);
+// 	console.log(homeMax);
+// 	console.log(familyMax);
+// 	console.log(busMin);
+// });
+
 module.exports = router;
+
+
+

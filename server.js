@@ -43,6 +43,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use('/api/data', zipstats_controller);  Route for api
 app.use('/', zipstats_controller);
 
 /* ERROR HANDLER */
