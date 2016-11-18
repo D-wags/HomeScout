@@ -171,3 +171,8 @@ footer .glyphicon:hover {
     margin-right: 5px;
 }
 
+#pd h3 {
+    font-size: 1em !important;
+    margin: 10px;
+    font-size: 1.2em;
+}
