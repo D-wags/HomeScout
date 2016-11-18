@@ -57,7 +57,9 @@ body {
 }
 
 #about {
-    height:100vh;
+    height:50vh;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #services {
@@ -143,9 +145,11 @@ footer .glyphicon:hover {
 
 #features {
     top: 0;
-    height: 300px;
+    /*height: 300px;*/
+    height:33vh;
     margin-top: 20px;
-    width: 430px;
+    /*width: 430px;*/
+    width: 25vw;
     padding-left: 15px;
     padding-right: 15px;
 }
