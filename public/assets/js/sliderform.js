@@ -77,7 +77,7 @@ $( document ).ready(function() {
 	});
 	$("#send").on('click', function(ev) {
 		ev.preventDefault();
-		range_data = {
+		var range_data = {
 			rent: {
 				min: $("#rent").data().from,
 				max: $("#rent").data().to
@@ -103,6 +103,18 @@ $( document ).ready(function() {
 				max: $("#hip").data().to
 			}
 		};
-		console.log(range_data);
+		$.ajax({
+			method: "GET",
+			url: "/getzips",
+			data: range_data,
+			contentType: "application/json"
+		})
+		.done(function( msg ) {
+			$("#zipresult").html("");	
+			msg.zips.forEach(function(z){
+				$("#zipresult").append( "<p>"+z+"</p>" );
+			});
+			$('#myModal').modal('show');
+		});
 	});
 });

@@ -45,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/api/data', zipstats_controller);  Route for api
 app.use('/', zipstats_controller);
+app.use('/getdata', zipstats_controller);
 
 /* ERROR HANDLER */
 // =============
