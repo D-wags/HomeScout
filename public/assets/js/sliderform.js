@@ -75,7 +75,8 @@ $( document ).ready(function() {
 		step: 1,
 		grid: true
 	});
-	$("#send").on('click', function() {
+	$("#send").on('click', function(ev) {
+		ev.preventDefault();
 		range_data = {
 			rent: {
 				min: $("#rent").data().from,
@@ -93,11 +94,11 @@ $( document ).ready(function() {
 				min: $("#bus").data().from,
 				max: $("#bus").data().to
 			},
-			family: {
+			walk: {
 				min: $("#walk").data().from,
 				max: $("#walk").data().to
 			},
-			bus: {
+			hip: {
 				min: $("#hip").data().from,
 				max: $("#hip").data().to
 			}
